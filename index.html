@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Guess the Number</title>
+        <style>
+            body{
+                padding-top: 45px;
+                padding-left: 120px;
+                padding-right: 45px;
+                flex-wrap: wrap;
+            }
+            .numpad{
+                height: 300px;
+                width: 220px;
+                display: flex;
+                flex-wrap: wrap;
+                border: 2px solid black;
+            }
+            .indi{
+                height: 50px;
+                width: 50px;
+                background-color: wheat;
+                margin:10px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            h1{
+                color: #a1b2c3;
+                background-color: blueviolet;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="search-form">
+        <input type="search" id="search-input" placeholder="Enter the number...">
+        <button type="submit" id="submit-btn">Display Text</button>
+        </form>
+        <p id="display-area"></p>
+        <div class="numpad">
+            <div id="1" class="indi">1</div>
+            <div id="2" class="indi">2</div>
+            <div id="3" class="indi">3</div>
+            <div id="4" class="indi">4</div>
+            <div id="5" class="indi">5</div>
+            <div id="6" class="indi">6</div>
+            <div id="7" class="indi">7</div>
+            <div id="8" class="indi">8</div>
+            <div id="9" class="indi">9</div>
+            <div class="indi" style="background-color: white;"></div>
+            <div id="0" class="indi">0</div>
+        </div>
+        <script>
+            let searchform=document.getElementById("search-form");
+            let searchInput=document.getElementById("search-input");
+            let displayArea=document.getElementById("display-area");
+            let random=Math.floor(Math.random()*100)+1;
+            console.log(random);
+            searchform.addEventListener('submit',function(event){
+                event.preventDefault();
+                let userInput=Number(searchInput.value);
+                if(userInput>random){
+                    displayArea.innerText='The number is less';
+                }else if(userInput<random){
+                    displayArea.innerText='The number is more';
+                }else{
+                    displayArea.innerText='CORREct answer';
+                }
+                searchInput.value='';
+            })
+        </script>
+    </body>
+</html>
