@@ -9,34 +9,49 @@
                 padding-left: 120px;
                 padding-right: 45px;
                 flex-wrap: wrap;
+                background-color: #E3F2FD;
             }
             .numpad{
-                height: 300px;
-                width: 220px;
+                height: 280px;
+                width: 230px;
                 display: flex;
                 flex-wrap: wrap;
                 border: 2px solid black;
+                border-radius: 3.5px;
             }
             .indi{
                 height: 50px;
                 width: 50px;
-                background-color: wheat;
+                background-color: #29B6F6;
                 margin:10px;
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                border: 2px solid #055c84; 
+                border-radius: 5px;
             }
-            h1{
-                color: #a1b2c3;
-                background-color: blueviolet;
+            h3{
+                background-color: #ae2f43;
+            }
+            .indi:hover{
+                background-color: greenyellow;
+                border: 2px solid green;
+            }
+            .search{
+                border: 2px solid brown;
+                border-radius: 8px;
+            }
+            button{
+                background-color: ;
             }
         </style>
     </head>
     <body>
+        <h2 style="align-items: center;">Guess the number</h2>
         <form id="search-form">
-        <input type="search" id="search-input" placeholder="Enter the number...">
-        <button type="submit" id="submit-btn">Display Text</button>
+        <input type="number" id="search-input" class="search" placeholder=" Enter the number">
+        <button type="submit" id="submit-btn">Guess</button>
         </form>
         <p id="display-area"></p>
         <div class="numpad">
@@ -49,13 +64,16 @@
             <div id="7" class="indi">7</div>
             <div id="8" class="indi">8</div>
             <div id="9" class="indi">9</div>
-            <div class="indi" style="background-color: white;"></div>
+            <div class="indi" style="background-color: #E3F2FD;border: none;"></div>
             <div id="0" class="indi">0</div>
         </div>
+        <p id="Attempts">Attempts:</p>
         <script>
             let searchform=document.getElementById("search-form");
             let searchInput=document.getElementById("search-input");
             let displayArea=document.getElementById("display-area");
+            let Attempts=0;
+            let attempts=document.getElementById("Attempts");
             let random=Math.floor(Math.random()*100)+1;
             console.log(random);
             searchform.addEventListener('submit',function(event){
@@ -66,9 +84,17 @@
                 }else if(userInput<random){
                     displayArea.innerText='The number is more';
                 }else{
-                    displayArea.innerText='CORREct answer';
+                    displayArea.innerText='Correct answer';
                 }
                 searchInput.value='';
+                Attempts++;
+                attempts.innerText='Attempts:'+Attempts;
+            })
+            let a1=document.querySelectorAll(".indi");
+            a1.forEach((numpad)=>{
+                numpad.addEventListener("click",function(){
+                    searchInput.value+=numpad.getAttribute("id");
+                })
             })
         </script>
     </body>

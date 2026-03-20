@@ -1,0 +1,98 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2 Players guess number</title>
+        <style>
+            .numpad{
+                border: 2.5px solid black;
+                /*background-color=*/
+                border-radius: 2.5px;
+                display: flex;
+                flex-wrap: wrap;
+                height: 350px;
+                width: 270px;
+            }
+            .indi{
+                /*background-color:*/
+                height: 50px;
+                width: 50px;
+                border:2.5px solid black;
+                border-radius: 2.5px;
+                margin:15px;
+            }
+            .numpad1{
+                border:2.5px solid bisque;
+                border-radius: 2.5px;
+                display: flex;
+                flex-wrap: wrap;
+                height: 355px;
+                width: 270px;
+            }
+            .indi1{
+                height: 50px;
+                width: 50px;
+                margin: 15px;
+                border-radius: 2.5px;
+                border: 2.5px solid blanchedalmond;
+            }
+            .tables{
+                display: flex;
+                flex-direction: left;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="index.html">index</a>
+        <div id="12"></div>
+        <div class="indi" id="1">1</div>
+        <div class="indi" id="2">2</div>
+        <div class="indi" id="3">3</div>
+        <div class="indi" id="4">4</div>
+        <div class="indi" id="5">5</div>
+        <div class="indi" id="6">6</div>
+        <div class="indi" id="7">7</div>
+        <div class="indi" id="8">8</div>
+        <div class="indi" id="9">9</div>
+        <div class="indi" id="0">0</div>
+        <div></div>
+        <div id="tables">
+        <form id="searchform">
+            <input type="number" id="searchinput" placeholder="Enter the number" class="search">
+            <button type="submit" id="submitbtn">Guess</button>
+        </form>
+    <p id="displayarea"></p>
+    <div class="numpad">
+        <div id="1" class="indi">1</div>
+        <div id="2" class="indi">2</div>
+        <div id="3" class="indi">3</div>
+        <div id="4" class="indi">4</div>
+        <div id="5" class="indi">5</div>
+        <div id="6" class="indi">6</div>
+        <div id="7" class="indi">7</div>
+        <div id="8" class="indi">8</div>
+        <div id="9" class="indi">9</div>
+        <div class="indi"></div>
+        <div class="indi" id="0">0</div>
+    </div>
+    <form id="searchform1">
+        <input type="number" id="searchnput1" placeholder="Enter the number" class="search">
+        <button type="submit" id="submitbtn1">Guess1</button>
+    </form>
+    <p id="displayarea1"></p>
+    <div class="numpad1">
+        <div class="indi1" id="1">1</div>
+        <div class="indi1" id="2">2</div>
+        <div class="indi1" id="3">3</div>
+        <div class="indi1" id="4">4</div>
+        <div class="indi1" id="5">5</div>
+        <div class="indi1" id="6">6</div>
+        <div class="indi1" id="7">7</div>
+        <div class="indi1" id="8">8</div>
+        <div class="indi1" id="9">9</div>
+        <div class="indi1"></div>
+        <div class="indi1" id="0">0</div>
+    </div>
+    </div>
+    </body>
+</html>
