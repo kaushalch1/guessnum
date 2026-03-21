@@ -130,9 +130,36 @@
             let userinput=Number(searchinput.value);
             if(userinput>random){
                 displayarea.innerText='The number is less';
-            }else if(userinput<ran)
-
+            }else if(userinput<random){
+                displayarea.innerText='The number is more';
+            }else{
+                displayarea.innerText='Correct answer';
+            }
+            searchinput.value='';
+            attempts++;
+            Attempts.innerText='Attempts:'+attempts;
         })
-</script>
+        let a1=document.querySelectorAll(".indi");
+        a1.forEach((numpad)=>{
+            numpad.addEventListener("click",function(){
+                searchinput.value+=numpad.getAttribute("id");
+            })
+        })
+        searchform1.addEventListener("click",function(event){
+            event.preventDefault();
+            let userinput1=Number(searchinput1.value);
+            if(userinput1>random){
+                displayarea1.innerText='The number is more';
+            }else if(userinput1<random){
+                displayarea1.innerText='The number is less';
+            }else{
+                displayarea1.innerText='Correct answer';
+            }
+        })
+        let a=document.querySelectorAll(".indi");
+        a.forEach((numpad1)=>{
+            searchinput1.value+=numpad1.getAttribute("id");
+        })
+        </script>
     </body>
 </html>
