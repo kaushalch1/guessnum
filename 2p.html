@@ -7,6 +7,8 @@
             body{
                 margin-left: 100px;
                 margin-top: 100px;
+                background-color: #E0F7FA;
+
             }
             .numpad{
                 border: 2.5px solid black;
@@ -35,6 +37,7 @@
                 flex-wrap: wrap;
                 height: 355px;
                 width: 270px;
+                /* background-color: ; */
             }
             .indi1{
                 height: 50px;
@@ -64,6 +67,11 @@
                 flex-direction: column;
                 /*align-items: center; */
             }
+            #searchinput{
+                background-color: #F1F8E9;
+                border: 2.5px solid #26C6DA;
+                border-radius: 5px;
+            }
         </style>
     </head>
     <body>
@@ -71,12 +79,12 @@
         <h4>Fastest one to guess the number wins</h4>
         <div id="tables">
         <div class="player">
-            <p>Pla</p>
+            <p>Play</p>
         <form id="searchform">
             <input type="number" id="searchinput" placeholder="Enter the number" class="search">
             <button type="submit" id="submitbtn">Guess</button>
         </form>
-    <p id="displayarea"></p>
+    <p id="displayarea">Guess the number</p>
     <div class="numpad">
         <div id="1" class="indi">1</div>
         <div id="2" class="indi">2</div>
@@ -94,10 +102,10 @@
     <p id="Attempts">Attempts</p>
     <div class="player">
     <form id="searchform1">
-        <input type="number" id="searchnput1" placeholder="Enter the number" class="search">
+        <input type="number" id="searchinput1" placeholder="Enter the number" class="search">
         <button type="submit" id="submitbtn1">Guess</button>
     </form>
-    <p id="displayarea1"></p>
+    <p id="displayarea1">Guess the Number</p>
     <div class="numpad1">
         <div class="indi1" id="1">1</div>
         <div class="indi1" id="2">2</div>
@@ -139,6 +147,7 @@
             attempts++;
             Attempts.innerText='Attempts:'+attempts;
         })
+        console.log(random,random1);
         let a1=document.querySelectorAll(".indi");
         a1.forEach((numpad)=>{
             numpad.addEventListener("click",function(){
@@ -148,17 +157,19 @@
         searchform1.addEventListener("click",function(event){
             event.preventDefault();
             let userinput1=Number(searchinput1.value);
-            if(userinput1>random){
-                displayarea1.innerText='The number is more';
-            }else if(userinput1<random){
+            if(userinput1>random1){
                 displayarea1.innerText='The number is less';
+            }else if(userinput1<random1){
+                displayarea1.innerText='The number is more';
             }else{
                 displayarea1.innerText='Correct answer';
             }
         })
-        let a=document.querySelectorAll(".indi");
-        a.forEach((numpad1)=>{
-            searchinput1.value+=numpad1.getAttribute("id");
+        let a2=document.querySelectorAll(".indi1");
+        a2.forEach((numpad1)=>{
+            numpad1.addEventListener("click",function(){
+                searchinput1.value+=numpad1.getAttribute("id");
+            })
         })
         </script>
     </body>

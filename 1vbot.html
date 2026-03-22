@@ -1,0 +1,52 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Guess the Number</title>
+    </head>
+    <body>
+        <h2>Guess the number</h2>
+        <form id="search-form">
+            <input type="number" id="search-input" placeholder=" Enter the number">
+            <button type="submit" id="submit-btn">Guess</button>
+        </form>
+        <p id="display-area"></p>
+        <div class="numpad">
+            <div class="indi" id="1">1</div>
+            <div class="indi" id="2">2</div>
+            <div class="indi" id="3">3</div>
+            <div class="indi" id="4">4</div>
+            <div class="indi" id="5">5</div>
+            <div class="indi" id="6">6</div>
+            <div class="indi" id="7">7</div>
+            <div class="indi" id="8"></div>
+            <div class="indi" id="9"></div>
+            <div class="indi"></div>
+            <div class="indi" id="0">0</div>
+        </div>
+        <div>
+            <div id="1">1</div>
+            <div id="2">2</div>
+            <div id="3">3</div>
+            <div id="4">4</div>
+            <div id="5">5</div>
+            <div id="6">6</div>
+            <div id="7">7</div>
+            <div id="8">8</div>
+            <div id="9">9</div>
+            <div id="10">10</div>
+            <div id="11">11</div>
+        </div>
+        <p id="attempts">Attempts</p>
+        <script>
+            let Attempts=document.getElementById("attempts");
+            let searchform=document.getElementById("search-form");
+            let searchinput=document.getElementById("search-input");
+            let Attempts1=0;
+            let random=Math.floor(Math.random()*100)+1;
+            searchform.addEventListener("click",function(event){
+                event.preventDefault();
+            })
+        </script>
+    </body>
+</html>

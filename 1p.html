@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Guess the Number</title>
         <style>
             body{
@@ -9,20 +10,21 @@
                 padding-left: 120px;
                 padding-right: 45px;
                 flex-wrap: wrap;
-                background-color: #E3F2FD;
+                background-color: #E0F7FA;
+                color: #004D40;
             }
             .numpad{
-                height: 280px;
-                width: 230px;
+                height: 300px;
+                width: 223px;
                 display: flex;
                 flex-wrap: wrap;
                 border: 2px solid black;
-                border-radius: 3.5px;
+                border-radius: 10px;
             }
             .indi{
                 height: 50px;
                 width: 50px;
-                background-color: #29B6F6;
+                background-color:#64B5F6;
                 margin:10px;
                 cursor: pointer;
                 display: flex;
@@ -35,15 +37,55 @@
                 background-color: #ae2f43;
             }
             .indi:hover{
-                background-color: greenyellow;
+                background-color: #26C6DA;
+                color: #FFFFFF;
                 border: 2px solid green;
             }
             .search{
-                border: 2px solid brown;
+                border: 2px solid#26C6DA;
                 border-radius: 8px;
+                background-color: #F1F8E9;
+                color: #004D40;
+                width:200px;
+                height: 25px;
+                font-size: 15px;
             }
-            button{
-                background-color: ;
+            #submit-btn{
+                background-color: #64B5F6;
+                border:2px solid #26C6DA;
+                color: #004D40;
+                height: 25px;
+                margin-left: 7px;
+                border-radius: 5px;
+            }
+            #submit-btn:hover{
+                background-color: #26C6DA;
+                color: #FFFFFF;
+            }
+            .overlay{
+                display: none;
+                position: fixed;
+                top: 0;left: 0;
+                width: 100%;height: 100%;
+                background: rgba(0, 0,0,0.5);
+                z-index: 5;
+            }
+            .popcontent{
+                background: white;
+                padding: 20px;
+                width: 300px;
+                margin: 15% auto;
+                border-radius: 8px;
+                background-color: #26C6DA;
+            }
+            #popbutton{
+                background-color:#64B5F6;
+                height: 30px;
+                width: 50px;
+                color: white;
+                border:1px solid white;
+                border-radius: 1px;
+
             }
         </style>
     </head>
@@ -53,7 +95,7 @@
         <input type="number" id="search-input" class="search" placeholder=" Enter the number">
         <button type="submit" id="submit-btn">Guess</button>
         </form>
-        <p id="display-area"></p>
+        <p id="display-area">Guess the Number</p>
         <div class="numpad">
             <div id="1" class="indi">1</div>
             <div id="2" class="indi">2</div>
@@ -68,6 +110,13 @@
             <div id="0" class="indi">0</div>
         </div>
         <p id="Attempts">Attempts:</p>
+        <div id="popup" class="overlay">
+            <div class="popcontent">
+            <h2>Congratulations!</h2>
+            <p id="att"></p>
+            <button onclick="window.location.reload()" id="popbutton">Retry</button>
+            </div>
+        </div>
         <script>
             let searchform=document.getElementById("search-form");
             let searchInput=document.getElementById("search-input");
@@ -85,6 +134,10 @@
                     displayArea.innerText='The number is more';
                 }else{
                     displayArea.innerText='Correct answer';
+                    let popup=document.getElementById('popup');
+                    let att=document.getElementById("att");
+                    att.innerText='Attempts:'+Attempts;
+                    popup.style.display='block';
                 }
                 searchInput.value='';
                 Attempts++;
