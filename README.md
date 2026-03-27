@@ -1,0 +1,1 @@
+a game which can be played with friends that is where we have different modes in which the players are required to guess the number between 1-100 there are currently 2modes 1 for 1player game the other for 2 player game which can be played and requires 2 players to play ,new modes are being added!
