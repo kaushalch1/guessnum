@@ -6,8 +6,7 @@
         <style>
             body{
                 margin-left: 100px;
-                margin-top: 100px;
-
+                margin-top: 70px;
                 background-color: #E0F7FA;
             }
             .numpad{
@@ -59,7 +58,7 @@
                 background-color: #FFD54F;
                 color: #212121;
             }
-            .indi:hover{
+            .indi1:hover{
                 background-color: #FB8C00;
                 border: 2px solid white;
             }
@@ -110,81 +109,230 @@
                 border: 1px solid white;
                 border-radius: 1px;
             }
+            .dropdown{
+                position: relative;
+                display: inline-block;
+                overflow: visible;
+            }
+
+            .show{
+                display: block !important;
+            }
+            .dropdown .dropbtn{
+                cursor: pointer;
+                border: none;
+                outline: none;
+                color: white;
+                background-color: #64B5F6;
+                padding: 6px 14px;
+                border-radius: 5px;
+                font-size: 14px;
+                font-weight: bold;
+                letter-spacing: 0.5px;
+                transition: background-color 0.2s;
+            }
+            .dropdown .dropbtn:hover{
+                background-color: #6c3483;
+            }
+            .dropcontent{
+                display: none;
+                position: absolute;
+                top: calc(100% + 4px);
+                left: 0;
+                min-width: 150px;
+                background-color: white;
+                border: 1px solid #d0d0d0;
+                border-radius: 6px;
+                box-shadow: 0px 8px 20px rgba(0,0,0,0.18);
+                z-index: 100;
+                overflow: hidden;
+            }
+            .dropcontent a{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 14px;
+                color: #212121;
+                text-decoration: none;
+                font-size: 14px;
+                transition: background-color 0.15s;
+            }
+            .dropcontent a:hover{
+                background-color: #f0f0f0;
+            }
+            .dropcontent a.active-mode {
+                font-weight: bold;
+                color: #64B5F6;
+                background-color: #f5eafa;
+            }
+            .dropcontent a.active-mode::after {
+                content: '✓';
+                color: #64B5F6;
+            }
+
+            #search-input{
+                border: 2px solid #26C6DA;
+                border-radius: 8px;
+                background-color: #F1F8E9;
+                color: #004D40;
+                width: 200px;
+                height: 25px;
+                font-size: 15px;
+            }
+            #submit-btn{
+                background-color: #64B5F6;
+                border: 2px solid #26C6DA;
+                color: #004D40;
+                height: 25px;
+                margin-left: 6px;
+                border-radius: 5px;                
+            }
+            #submit-btn:hover{
+                background-color: #26C6DA;
+                color: white;
+            }
         </style>
     </head>
     <body>
         <h2>Guess the number</h2>
-        <h4>Fastest one to guess the number(Note:The player and bot has been given 2 different number)</h4>
-        <p>Player 1</p>
-        <form id="search-form">
-            <input type="number" id="search-input" placeholder=" Enter the number">
-            <button type="submit" id="submit-btn">Guess</button>
-        </form>
-        <p id="display-area"></p>
-        <div class="numpad">
-            <div class="indi" id="1">1</div>
-            <div class="indi" id="2">2</div>
-            <div class="indi" id="3">3</div>
-            <div class="indi" id="4">4</div>
-            <div class="indi" id="5">5</div>
-            <div class="indi" id="6">6</div>
-            <div class="indi" id="7">7</div>
-            <div class="indi" id="8"></div>
-            <div class="indi" id="9"></div>
-            <div class="indi"></div>
-            <div class="indi" id="0">0</div>
+        <h4>Fastest one to guess the number(Note:The player and bot has been given 2 different numbers to guess)</h4>
+        <p>The bot will auto guess after your turn</p>
+        <div class="dropdown">
+        <button class="dropbtn" id="dropbtn" onclick="dropy()">Mode: Hard ▾</button>
+        <div class="dropcontent" id="mydropdown">
+            <a href="#" id="opt-easy" onclick="setMode('easy'); return false;">Easy</a>
+            <a href="#" id="opt-hard" onclick="setMode('hard'); return false;" class="active-mode">Hard</a>
         </div>
-        <p>Bot</p>
-        <div class="numpad1">
-            <div id="1" class="indi1">1</div>
-            <div id="2" class="indi1">2</div>
-            <div id="3" class="indi1">3</div>
-            <div id="4" class="indi1">4</div>
-            <div id="5" class="indi1">5</div>
-            <div id="6" class="indi1">6</div>
-            <div id="7" class="indi1">7</div>
-            <div id="8" class="indi1">8</div>
-            <div id="9" class="indi1">9</div>
-            <div class="indi1"></div>
-            <div id="0"class="indi1">0</div>
         </div>
-        <p id="attempts">Attempts</p>
+
+        <div id="tables">
+            <div class="player">
+                <p>Player 1</p>
+                <form id="search-form">
+                    <input type="number" id="search-input" placeholder=" Enter the number">
+                    <button type="submit" id="submit-btn">Guess</button>
+                </form>
+                <p id="display-area">Guess the number</p>
+                <div class="numpad">
+                    <div class="indi" id="1">1</div>
+                    <div class="indi" id="2">2</div>
+                    <div class="indi" id="3">3</div>
+                    <div class="indi" id="4">4</div>
+                    <div class="indi" id="5">5</div>
+                    <div class="indi" id="6">6</div>
+                    <div class="indi" id="7">7</div>
+                    <div class="indi" id="8">8</div>
+                    <div class="indi" id="9">9</div>
+                    <div class="indi" style="background-color:#E0F7FA;margin-right :-41px;border: none;"></div>
+                    <div class="indi" id="0">0</div>
+                </div>
+            </div>
+            <div class="player">
+                <p>Bot</p><br><br>
+                <p id="display-area1">Guessing the number...</p>
+                <div class="numpad1">
+                    <div id="11" class="indi1">1</div>
+                    <div id="22" class="indi1">2</div>
+                    <div id="33" class="indi1">3</div>
+                    <div id="44" class="indi1">4</div>
+                    <div id="55" class="indi1">5</div>
+                    <div id="66" class="indi1">6</div>
+                    <div id="77" class="indi1">7</div>
+                    <div id="88" class="indi1">8</div>
+                    <div id="99" class="indi1">9</div>
+                    <div class="indi1" style="border: none;background-color:#E0F7FA"></div>
+                    <div id="00"class="indi1">0</div>
+                </div>
+            </div>
+        </div>
+        <p id="attempts">Attempts:</p>
+        <div id="popup" class="overlay">
+            <div class="popcontents">
+                <p>Congratulations!</p>
+                <p id="Atttempts"></p>
+                <button onclick="window.location.reload()" id="popbutton">Retry</button>
+            </div>
+        </div>
         <script>
             let Attempts=document.getElementById("attempts");
             let searchform=document.getElementById("search-form");
             let searchinput=document.getElementById("search-input");
-            let Attempts1=0;
-            let displayarea=document.getElementById("display-area")
+            let Attempts1=0,Attempts2=0;
+            let displayarea=document.getElementById("display-area");
+            let displayarea1=document.getElementById("display-area1");
             let random=Math.floor(Math.random()*100)+1;
             let random1=Math.floor(Math.random()*100)+1;
-            let min=1,max=100,mode="";
-            function easy(){
-            }
-            function hard(){
-
-            }
-            searchform.addEventListener("click",function(event){
-                event.preventDefault();
-                let userInput=Number(searchinput.value);
-                searchinput.value='';
-                Attempts1++;
-                Attempts.innerText='Attempts'+Attempts1;
-                if(userInput>random){
-                    displayarea.innerText='The number is less';
-                }else if(userinput<random){
-                    displayarea.innerText='The number is more';
-                }else{
-                    displayarea.innnertext='Correct answer';
-                }
-                let x=bot();
-                if(x>random1){
-
-                }else if(x<random1){
-
-                }else{
-                    
+            let min=1,max=100,mode="hard",i=0,j=0;
+            const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+            console.log(random,random1);
+            searchform.addEventListener("submit",function(event){
+                if(i!=1){
+                    event.preventDefault();
+                    let userInput=Number(searchinput.value);
+                    searchinput.value='';
+                    Attempts1++;
+                    Attempts.innerText='Attempts: '+Attempts1;
+                    if(userInput>random){
+                        displayarea.innerText='The number is less';
+                        bot1();
+                    }else if(userInput<random){
+                        displayarea.innerText='The number is more';
+                        bot1();
+                    }else{
+                        displayarea.innerText='Correct answer';i=1;winner();
+                        while(j!=1){
+                            bot1();
+                        }
+                    }
                 }
             })
+            function bot1(){
+                if(j!=1){
+                    Attempts2++;
+                    let x=bot();
+                    if(x>random1){
+                        displayarea1.innerText='The number is less';
+                        max=x-1;
+                    }else if(x<random1){
+                        displayarea1.innerText='The number is more';
+                        min=x+1;
+                    }else{
+                        j=1;
+                        winner();
+                        displayarea1.innerText='Correct answer';
+                        console.log("Correct answer");
+                    }light(x);
+                    console.log(x);
+                }
+            }
+            function winner(){
+                let att=document.getElementById("Atttempts");
+                let popup=document.getElementById('popup');
+                if(i===1&&j===1){
+                    popup.style.display='block';
+                    if(Attempts1<Attempts2){
+                        att.innerHTML='Player 1 has won<br>Player 2 do you want a re-match?';
+                    }else if(Attempts1>Attempts2){
+                        att.innerHTML='Player 2 has won<br>Player 1 do you want a re-match?'
+                    }else if(Attempts1===Attempts2){
+                        att.innerHTML='Both players are tied up!<br>Do you guys want a re-match?'
+                    }
+                }
+            }
+            async function light(z){
+                z=z.toString();
+                // console.log(z);
+                for(let i=0;i<z.length;i++){
+                    let string=z[i]+z[i];
+                    let queies=document.getElementById(string);
+                    queies.style.backgroundColor='#FB8C00';
+                    queies.style.border='2px solid white';
+                    await sleep(350);
+                    queies.style.backgroundColor='#FFD54F';
+                    queies.style.border='2px solid #F57c00';
+                    }
+
+            }
             function bot(){
                 if(mode==="easy"){
                     let ran=Math.floor(Math.random()*(max-min+1))+min;
@@ -192,6 +340,31 @@
                 }else if(mode==="hard"){
                     let ran=Math.floor((max+min)/2);
                     return ran;
+                }
+            }
+            let a1=document.querySelectorAll(".indi");
+            a1.forEach((numpad)=>{
+                numpad.addEventListener("click",function(){
+                    searchinput.value+=numpad.getAttribute("id");
+                })
+            })
+            function dropy(){
+                document.getElementById("mydropdown").classList.toggle("show");
+            }
+            function setMode(selectedMode){
+                mode=selectedMode;
+                document.getElementById("dropbtn").innerText="Mode: "+selectedMode.charAt(0).toUpperCase()+selectedMode.slice(1)+" ▾";
+                document.getElementById("mydropdown").classList.remove("show");
+
+                document.querySelectorAll('.dropcontent a').forEach(a=>a.classList.remove('active-mode'));
+                document.getElementById('opt-'+selectedMode).classList.add('active-mode');
+            }
+            window.onclick=function(e){
+                if(!e.target.matches('.dropbtn')){
+                    let mydropdown=document.getElementById("mydropdown");
+                    if(mydropdown.classList.contains('show')){
+                        mydropdown.classList.remove('show');
+                    }
                 }
             }
         </script>
