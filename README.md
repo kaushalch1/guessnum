@@ -5,6 +5,8 @@ Choose your challenge:
 
 Single Player: It’s you only.try to find the number in the lowest possible.
 
+Single player vs bot: the player willll choose the number after the player chooses the number the bot will guesss its number.there are 2 different modes.Fastest one wins.The player aand bot are given 2 different numbers.
+
 2-Player Mode: This turns it into a real competition. Two players take turns guessing, and the game tracks who gets closer or hits the mark first!
 
 The Goal: Enter a number between 1 and 100. The game will tell you if you're "Too High" or "Too Low" until someone nails it.
